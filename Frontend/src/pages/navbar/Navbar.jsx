@@ -8,7 +8,7 @@ export const Navbar = () => {
     { path: "/course", label: "Courses" },
     { path: "/letucre", label: "Schedule Lectures" },
     { path: "/instructor", label: "Instructor" },
-    { path: "/courseList", label: "CourseList" }
+    { path: "/courseList1", label: "CourseList" }
   ];
   const navigate = useNavigate()
   const Login = () => {

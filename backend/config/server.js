@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
-
+require("dotenv").config();
 const getDb = () => {
   try {
-    mongoose.connect("mongodb://127.0.0.1:27017/kdigital");
+    mongoose.connect(process.env.MONGO_URL);
     console.log("MongoDB connected successfully");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);

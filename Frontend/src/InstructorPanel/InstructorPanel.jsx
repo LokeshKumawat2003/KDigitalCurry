@@ -1,65 +1,57 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const CourseList = () => {
-  const [courses, setCourses] = useState([]);
+const CourseList1 = () => {
+    const [courses, setCourses] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-   
-    const sampleCourses = [
-      {
-        id: 1,
-        name: "React for Beginners",
-        scheduledDates: "March 10 - March 20, 2025",
-        lectures: [
-          { topic: "Introduction to React", date: "March 10" },
-          { topic: "State and Props", date: "March 12" },
-          { topic: "Handling Events", date: "March 15" },
-        ],
-      },
-      {
-        id: 2,
-        name: "Advanced JavaScript",
-        scheduledDates: "April 5 - April 15, 2025",
-        lectures: [
-          { topic: "ES6+ Features", date: "April 5" },
-          { topic: "Async JavaScript", date: "April 8" },
-          { topic: "Functional Programming", date: "April 12" },
-        ],
-      },
-    ];
+    useEffect(() => {
+        const fetchCourses = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/api/course");
+                setCourses(response.data);
+            } catch (err) {
+                setError("Failed to fetch courses");
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchCourses();
+    }, []);
 
-    setCourses(sampleCourses);
-  }, []);
+    if (loading) return <p>Loading courses...</p>;
+    if (error) return <p style={{ color: "red" }}>{error}</p>;
 
-  return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h2>Available Courses</h2>
-      {courses.map((course) => (
-        <div
-          key={course.id}
-          style={{
-            border: "1px solid #ddd",
-            padding: "15px",
-            marginBottom: "10px",
-            borderRadius: "8px",
-          }}
-        >
-          <h3>{course.name}</h3>
-          <p>
-            <strong>Scheduled Dates:</strong> {course.scheduledDates}
-          </p>
-          <h4>Lecture Details:</h4>
-          <ul>
-            {course.lectures.map((lecture, index) => (
-              <li key={index}>
-                {lecture.date}: {lecture.topic}
-              </li>
+    return (
+        <div style={{ padding: "20px", fontFamily: "Arial" }}>
+            <h2>Available Courses</h2>
+            {courses.map((course) => (
+                <div
+                    key={course._id}
+                    style={{
+                        border: "1px solid #ddd",
+                        padding: "15px",
+                        marginBottom: "10px",
+                        borderRadius: "8px",
+                    }}
+                >
+                    <h3>{course.name}</h3>
+                    <p>
+                        <strong>Scheduled Dates:</strong> {course.scheduledDates}
+                    </p>
+                    <h4>Lecture Details:</h4>
+                    <ul>
+                        {course.lectures.map((lecture, index) => (
+                            <li key={index}>
+                                {lecture.date}: {lecture.topic}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             ))}
-          </ul>
         </div>
-      ))}
-    </div>
-  );
+    );
 };
 
-export default CourseList;
+export default CourseList1;
