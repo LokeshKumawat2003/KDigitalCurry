@@ -1,0 +1,123 @@
+.course-head {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-top: 50px;
+  color: #333;
+}
+.course-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 20px;
+}
+
+.course-card1 {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  /* width: 420px; */
+  max-width: 90%;
+}
+
+.course-title {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.course-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-input,
+.lecture-input,
+.course-textarea,
+.file-input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: 0.3s ease-in-out;
+}
+
+.course-input:focus,
+.lecture-input:focus,
+.course-textarea:focus,
+.file-input:focus,
+select:focus {
+  border-color: #6200ea;
+  outline: none;
+  box-shadow: 0 0 5px rgba(98, 0, 234, 0.2);
+}
+
+.course-textarea {
+  resize: none;
+  min-height: 100px;
+}
+
+.file-input {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.add-btn,
+.submit-btn {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-btn {
+  background-color: #c100ff;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #9c0bcd;
+}
+
+.submit-btn {
+  background-color: #285ba7;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #184b96;
+}
+
+@media (max-width: 480px) {
+  .course-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .add-btn,
+  .submit-btn {
+    width: 100%;
+  }
+}

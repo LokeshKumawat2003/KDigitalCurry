@@ -1,0 +1,132 @@
+/* Header Styling */
+.letucre-head {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #4e2f7e;
+    margin-bottom: 30px;
+  }
+  
+  .letucre-head p {
+    font-size: 1.3rem;
+    margin: 70px 2px 15px 2px;
+    color: #333;
+  }
+  
+  /* Layout & Container */
+  .letucre-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  /* Course Card Styling */
+  .course-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Course Title */
+  .course-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #4e2f7e;
+    text-align: center;
+  }
+  
+  /* Lecture List */
+  .lecture-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .lecture-item {
+    font-size: 1rem;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .lecture-item:last-child {
+    border-bottom: none;
+  }
+  
+  /* Input & Select Fields */
+  .lecture-item input[type="date"],
+  .lecture-item select {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+  }
+  
+  .lecture-item input[type="date"]:focus,
+  .lecture-item select:focus {
+    border-color: #5e3b96;
+  }
+  
+  /* Submit Button */
+  .course-card button {
+    width: 100%;
+    background: #5e3b96;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: 15px;
+  }
+  
+  .course-card button:hover {
+    background: #4e2f7e;
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .course-card {
+      width: 90%;
+    }
+  
+    .lecture-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .letucre-box {
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .letucre-head {
+      font-size: 1.5rem;
+    }
+  
+    .course-card {
+      width: 100%;
+    }
+  }
+  
