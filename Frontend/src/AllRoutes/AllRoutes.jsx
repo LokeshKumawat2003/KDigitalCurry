@@ -11,6 +11,7 @@ import CourseList1 from '../InstructorPanel/InstructorPanel'
 
 
 
+
 export const AllRoutes = () => {
   return (
     <div>
@@ -22,7 +23,7 @@ export const AllRoutes = () => {
         <Route path="/course" element={<Course />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/courseList" element={<CourseList1 />} />
+        <Route path="/courseList1" element={<CourseList1 />} />
       </Routes></div>
   )
 }

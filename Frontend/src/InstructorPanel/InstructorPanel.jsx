@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 
 const CourseList1 = () => {
-    const [courses, setCourses] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const hardcodedCourses = [
+        {
+            _id: 1,
+            name: "React for Beginners",
+            scheduledDates: "March 10 - March 20, 2025",
+            lectures: [
+                { topic: "Introduction to React", date: "March 10" },
+                { topic: "State and Props", date: "March 12" },
+                { topic: "Handling Events", date: "March 15" },
+            ],
+        },
+        {
+            _id: 2,
+            name: "Advanced JavaScript",
+            scheduledDates: "April 5 - April 15, 2025",
+            lectures: [
+                { topic: "ES6+ Features", date: "April 5" },
+                { topic: "Async JavaScript", date: "April 8" },
+                { topic: "Functional Programming", date: "April 12" },
+            ],
+        },
+    ];
 
-    useEffect(() => {
-        const fetchCourses = async () => {
-            try {
-                const response = await axios.get("http://localhost:5000/api/course");
-                setCourses(response.data);
-            } catch (err) {
-                setError("Failed to fetch courses");
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchCourses();
-    }, []);
-
-    if (loading) return <p>Loading courses...</p>;
-    if (error) return <p style={{ color: "red" }}>{error}</p>;
+    // Directly setting the state with hardcoded data
+    const [courses] = useState(hardcodedCourses);
 
     return (
         <div style={{ padding: "20px", fontFamily: "Arial" }}>
