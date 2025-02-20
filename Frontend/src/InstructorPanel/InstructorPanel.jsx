@@ -1,56 +1,65 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Table, TableHead, TableRow, TableCell, TableBody } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
 
-const InstructorPanel = () => {
-    const [lectures, setLectures] = useState([]);
+const CourseList = () => {
+  const [courses, setCourses] = useState([]);
 
-    useEffect(() => {
-        // Simulating API call to fetch assigned lectures
-        const fetchLectures = async () => {
-            try {
-                const response = await fetch("/api/instructor/lectures"); // Replace with actual API
-                const data = await response.json();
-                setLectures(data);
-            } catch (error) {
-                console.error("Error fetching lectures:", error);
-            }
-        };
-        fetchLectures();
-    }, []);
+  useEffect(() => {
+   
+    const sampleCourses = [
+      {
+        id: 1,
+        name: "React for Beginners",
+        scheduledDates: "March 10 - March 20, 2025",
+        lectures: [
+          { topic: "Introduction to React", date: "March 10" },
+          { topic: "State and Props", date: "March 12" },
+          { topic: "Handling Events", date: "March 15" },
+        ],
+      },
+      {
+        id: 2,
+        name: "Advanced JavaScript",
+        scheduledDates: "April 5 - April 15, 2025",
+        lectures: [
+          { topic: "ES6+ Features", date: "April 5" },
+          { topic: "Async JavaScript", date: "April 8" },
+          { topic: "Functional Programming", date: "April 12" },
+        ],
+      },
+    ];
 
-    return (
-        <div className="container mx-auto p-6">
-            <h1 className="text-2xl font-bold mb-4">Instructor Panel</h1>
-            <Card>
-                <CardContent>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell className="font-bold">Course Name</TableCell>
-                                <TableCell className="font-bold">Scheduled Dates</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {lectures.length > 0 ? (
-                                lectures.map((lecture, index) => (
-                                    <TableRow key={index}>
-                                        <TableCell>{lecture.courseName}</TableCell>
-                                        <TableCell>{lecture.scheduledDate}</TableCell>
-                                    </TableRow>
-                                ))
-                            ) : (
-                                <TableRow>
-                                    <TableCell colSpan="2" className="text-center">No lectures assigned</TableCell>
-                                </TableRow>
-                            )}
-                        </TableBody>
-                    </Table>
-                </CardContent>
-            </Card>
+    setCourses(sampleCourses);
+  }, []);
+
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h2>Available Courses</h2>
+      {courses.map((course) => (
+        <div
+          key={course.id}
+          style={{
+            border: "1px solid #ddd",
+            padding: "15px",
+            marginBottom: "10px",
+            borderRadius: "8px",
+          }}
+        >
+          <h3>{course.name}</h3>
+          <p>
+            <strong>Scheduled Dates:</strong> {course.scheduledDates}
+          </p>
+          <h4>Lecture Details:</h4>
+          <ul>
+            {course.lectures.map((lecture, index) => (
+              <li key={index}>
+                {lecture.date}: {lecture.topic}
+              </li>
+            ))}
+          </ul>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
-export default InstructorPanel;
+export default CourseList;

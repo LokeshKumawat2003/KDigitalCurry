@@ -7,16 +7,17 @@ export const Navbar = () => {
   const navLinks = [
     { path: "/course", label: "Courses" },
     { path: "/letucre", label: "Schedule Lectures" },
-    { path: "/instructor", label: "Instructor" }
+    { path: "/instructor", label: "Instructor" },
+    { path: "/courseList", label: "CourseList" }
   ];
-const navigate =useNavigate()
-  const Login=()=>{
+  const navigate = useNavigate()
+  const Login = () => {
     navigate("/login")
   }
   return (
     <header>
       <nav className="navbar">
-      
+
         <div className="nav-logo">
           <img
             src="https://kdigitalcurry.com/assets/images/logo/KDC_logo.png"
@@ -27,7 +28,7 @@ const navigate =useNavigate()
           </div>
         </div>
 
-       
+
         <ul className="nav-links">
           {navLinks.map((link, index) => (
             <li key={index}>
@@ -38,7 +39,7 @@ const navigate =useNavigate()
           ))}
         </ul>
 
-      
+
         <div className="nav-login">
           <p className="login-btn" onClick={Login}>
             Login <FaRegUserCircle />
